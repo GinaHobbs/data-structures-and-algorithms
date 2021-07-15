@@ -7,7 +7,10 @@ Write a function called addTwo that takes in an array and adds two to every valu
 ------------------------------------------------------------------------------------------------ */
 
 const addTwo = (arr) => {
-  // Solution code here...
+  let newArr = arr.map(element => {
+    return element + 2;
+  })
+  return newArr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -19,7 +22,12 @@ For example, typeNum([1, 'bob' ,3]) returns [1,3].
 ------------------------------------------------------------------------------------------------ */
 
 const typeNum = (arr) => {
-  // Solution code here...
+  let newArr = arr.filter(function(element,i) {
+    if (typeof(element) === typeof(1)) {
+      return element;
+    }
+  })
+  return newArr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -31,7 +39,12 @@ For example, containsAnd(['panda', 'ran', 'and']) returns ['panda', 'and'].
 ------------------------------------------------------------------------------------------------ */
 
 const containsAnd = (arr) => {
-  // Solution code here...
+  let newArr = arr.filter(function(string,i) {
+    if (string.includes('and')) {
+      return string;
+    }
+  })
+  return newArr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -43,7 +56,12 @@ For example, oddValues([1,2,3]) returns [1,3].
 ------------------------------------------------------------------------------------------------ */
 
 const oddValues = (arr) => {
-  // Solution code here...
+  let newArr = arr.filter(function(num,i) {
+    if (!(num % 2 === 0)) {
+      return num;
+    }
+  })
+  return newArr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -55,7 +73,12 @@ For example, notInFirstArray([1,2,3], [1,2,3,4]) returns [4].
 ------------------------------------------------------------------------------------------------ */
 
 const notInFirstArray = (forbiddenValues, arr) => {
-  // Solution code here...
+  let newArr = arr.filter(function(num,i){
+    if (!(forbiddenValues.includes(num))) {
+      return num;
+    }
+  })
+  return newArr;
 };
 
 /* ------------------------------------------------------------------------------------------------
