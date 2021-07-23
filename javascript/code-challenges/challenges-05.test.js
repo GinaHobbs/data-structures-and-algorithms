@@ -27,8 +27,13 @@ Write a function named addValues that, given an array of numbers as input, uses 
 ------------------------------------------------------------------------------------------------ */
 
 const addValues = (arr) => {
-  //let newArr = arr.reduce()
+  let newArr = arr.reduce((accumulator, value, idx, arr) => {
+      accumulator += value;
+      return accumulator;
+  }, 0);
+  return newArr
 };
+//Source: https://www.freecodecamp.org/news/reduce-f47a7da511a9/
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 3
@@ -43,7 +48,11 @@ Write a function named addPurchases that, given an array of objects as input, us
 ------------------------------------------------------------------------------------------------ */
 
 const addPurchases = (arr) => {
-  // Solution code here...
+  let total = arr.reduce((accumulator, value, idx, arr) => {
+    accumulator += value.purchasePrice;
+    return accumulator;
+  }, 0)
+  return total;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -55,7 +64,11 @@ Note: You may not use the array's built-in length property.
 ------------------------------------------------------------------------------------------------ */
 
 const countNumberOfElements = (arr) => {
-  // Solution code here...
+  let count = arr.reduce((accumulator, value, idx, arr) => {
+    accumulator = idx + 1;
+    return accumulator;
+  })
+  return count;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -115,7 +128,12 @@ let starWarsData = [{
 }];
 
 const returnNames = (arr) => {
-  // Solution code here...
+  let nameArr = []
+  let names = arr.reduce ((accumulator, value, idx, arr) => {
+    nameArr.push(value.name);
+    return nameArr;
+  }, 0)
+  return names;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -127,7 +145,18 @@ Note: You must use reduce for this challenge. You may not use the built-in .reve
 ------------------------------------------------------------------------------------------------ */
 
 const reversedString = (str) => {
-  // Solution code here...
+  let revStr = [];
+  // sets i to the end of the string; if i >= 0 (the start of the string)
+  //then decrement (go on to the next letter in reverse order)
+  // say we have a 6 letter word. Start at position length-1, which is 5 (index number of last character). if i is >= to 0, start of the index, then push characters
+  for (let i = str.length-1; i >= 0; i--) {
+    revStr.push(str[i]);
+  }
+  revStr = revStr.join();
+  for (let i = 0; i < str.length-1; i++) {
+  revStr = revStr.replace(',','');
+  }
+   return revStr
 };
 
 /* ------------------------------------------------------------------------------------------------
