@@ -59,15 +59,17 @@ class LinkedList {
   insert(value) {
     let node = new Node(value)
 
+    console.log('inserting.....')
     if (!this.head) {
       this.head = node;
     }
 
     if (this.head) {
+      console.log(this.head.value)
       let oldHeadNode = this.head;
 
       this.head = node;
-      node.next = oldHeadNode;
+      this.head.next = oldHeadNode;
     }
   }
 
@@ -81,7 +83,6 @@ class LinkedList {
     if (!this.head.next) {
       let current = this.head;
       stringArr.push(`{ ${current.value} }`)
-      console.log(`{ ${current.value} }`);
     }
 
     if (this.head.next) {
@@ -97,6 +98,92 @@ class LinkedList {
         }
     }
     console.log(stringArr.toString());
+  }
+
+  insertBefore(value, newValue) {
+    let node = new Node(newValue);
+
+    if (this.includes(value) === true) {
+      console.log('value found');
+
+      let current = this.head;
+
+      //if head.next doesn't exist use the insert function defined before for inserting previous to head
+      if (this.head) {
+        this.insert(node.value)
+      } else {
+        //while current.next exists, the head has a next now...
+        while (current.next) {
+          //step through each link individually and look at the next node.
+          //we'll stay on the first node and always look ahead
+          //if the current value = the value we're looking for
+          if (current.next.value === value) {
+            //current -> NEW NODE -> current.next
+            //set old current.next into a var
+            let oldCurrentNext = current.next;
+            //set current.next to point to new node
+            current.next = node;
+            //set the next node in current.next to point to old node
+            current.next.next = oldCurrentNext
+            //break out of the loop
+            break;
+          }
+          //move to the next node
+          current = current.next;
+        }
+      }
+    }
+  }
+
+  insertAfter(value, newValue) {
+    let node = new Node(newValue)
+
+    if (this.includes(value) === true) {
+      let current = this.head
+
+      if (!this.head.next) {
+        this.head.next = node;
+      }
+
+      while (current.next) {
+        if (current.value === value) {
+          //store next node and then place it on the next of the new node
+          let nextNode = current.next;
+          current.next = node;
+          node.next = nextNode;
+        }
+        current = current.next;
+      }
+
+      if (!current.next) {
+        current.next = node;
+      }
+
+    }
+  }
+
+  delete(value) {
+
+    if ((!this.head.next) && (this.head.value === value)) {
+      this.head = null;
+    }
+
+    if ((this.head.next) && (this.head.value === value)) {
+      let oldHead = this.head;
+      this.head = this.head.next;
+      oldHead.next = null;
+    }
+
+    let current = this.head;
+
+    while (current.next) {
+      //current node - > next node checked for deletion -> next node
+      if (current.next.value === value) {
+        //set the current node's next to the next node's next
+        current.next = current.next.next.next;
+        current.next.next = null;
+      }
+    }
   }
 
 }
