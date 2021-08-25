@@ -180,8 +180,72 @@ class LinkedList {
       //current node - > next node checked for deletion -> next node
       if (current.next.value === value) {
         //set the current node's next to the next node's next
-        current.next = current.next.next.next;
-        current.next.next = null;
+        // current.next = current.next.next.next;
+        // current.next.next = null;
+      }
+    }
+  }
+
+  kth(k) {
+    let error = "";
+
+    if (!this.head) {
+      error = "there are no nodes";
+      return error;
+    }
+
+    if (k < 0) {
+      error = "k is less than 1";
+      return error;
+    }
+
+    //get the length of the linked list
+    //after the length is known, subtract k from the length
+    //store the value; this is the node, using normal numbering that has the value we want
+    //iterate through linked list to that node then return the value
+    if ((!this.head.next) && (k === 0)) {
+      console.log(this.head.value);
+    } else if ((!this.head.next) && (k > 0)) {
+      error = 'there is only one node in the list'
+      return error;
+    }
+
+    if (this.head) {
+      let current = this.head;
+      let listLength = 1;
+
+      while (current.next) {
+        listLength += 1;
+        current = current.next;
+      }
+
+      if (k === listLength) {
+        error = "k is the same length as the linked list";
+        return error;
+      }
+
+      let fromTail = listLength - k;
+
+      if (fromTail < 0) {
+        error = "k is larger than the linked list"
+        return error; 
+      }
+
+      current = this.head
+      let i = 1;
+
+      while (current.next) {
+        if (i === fromTail) {
+          console.log(current.value)
+          return current.value;
+        }
+        current = current.next
+        i++
+      }
+
+      if ((!current.next) && (k === 0)){
+        console.log(current.value);
+        return current.value;
       }
     }
   }

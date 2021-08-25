@@ -20,5 +20,6 @@ ll.toString();
 // ll.toString();
 ll.insertAfter(2,6)
 ll.toString();
-ll.delete(2);
+// ll.delete(2);
 ll.toString();
+ll.kth(3);
