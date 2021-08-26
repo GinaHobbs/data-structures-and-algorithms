@@ -250,6 +250,83 @@ class LinkedList {
     }
   }
 
+  zipLists(list1, list2) {
+    let ll1Arr = [];
+    let ll2Arr = [];
+    let error = '';
+
+    if (!list1.head) {
+      return list2;
+    }
+
+    if (!list2.head) {
+      return list1;
+    }
+
+    if (list1.head) {
+      let current = list1.head;
+
+      ll1Arr.push(current.value);
+
+      while (current.next) {
+        if (current !== list1.head) {
+          ll1Arr.push(current.value);
+        }
+        current = current.next;
+      }
+
+      ll1Arr.push(current.value);
+    }
+
+    if (list2.head) {
+      let current = list2.head;
+
+      ll2Arr.push(current.value);
+
+      while (current.next) {
+        if (current !== list2.head) {
+          ll2Arr.push(current.value);
+        }
+        current = current.next;
+      }
+
+      ll2Arr.push(current.value);
+    }
+
+    let newArr = []
+
+    if (ll1Arr.length > ll2Arr.length) {
+      for (let i = 0 ; i < ll1.length; i++) {
+        newArr.push(ll1Arr[i])
+        if (ll2Arr[i]) {
+          newArr.push(ll2Arr[i])
+        }
+      }
+    } else if (ll1Arr.length < ll2Arr.length) {
+      for (let i = 0 ; i < ll2.length; i++) {
+        newArr.push(ll2Arr[i])
+        if (ll1Arr[i]) {
+          newArr.push(ll1Arr[i])
+        }
+      }
+    } else {
+      for (let i = 0 ; i < ll1Arr.length; i++) {
+        newArr.push(ll1Arr[i])
+        if (ll2Arr[i]) {
+          newArr.push(ll2Arr[i])
+        }
+      }
+    }
+
+    let newll = new LinkedList()
+    for (let j = 0 ; j < newArr.length; j++) {
+      newll.append(newArr[j])
+    }
+    
+    return newll;
+
+  }
+
 }
 
 module.exports = LinkedList;

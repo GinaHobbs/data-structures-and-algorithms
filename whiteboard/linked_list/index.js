@@ -2,24 +2,15 @@
 
 const LinkedList = require('./ll.js');
 
-let ll = new LinkedList();
+let ll1 = new LinkedList();
+let ll2 = new LinkedList();
 
-ll.append(1);
-ll.append(2);
-// ll.append(3);
-// ll.append(4);
-// ll.insert(5);
-// console.log(ll);
-// console.log(ll.includes(4));
-ll.toString();
-// ll.insertBefore(1,6)
-// ll.toString();
-// ll.insertBefore(1,7)
-// ll.toString();
-// ll.insertBefore(6,8)
-// ll.toString();
-ll.insertAfter(2,6)
-ll.toString();
-// ll.delete(2);
-ll.toString();
-ll.kth(3);
+ll1.append(1);
+ll1.append(2);
+ll1.append(3);
+ll2.append(4);
+ll2.append(5);
+ll2.append(6);
+ll1.toString();
+ll2.toString();
+ll2.zipLists(ll1, ll2).toString();
