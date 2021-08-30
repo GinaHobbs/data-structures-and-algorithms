@@ -14,14 +14,16 @@ class Queue {
   }
 
   dequeue() {
-    //remove front of queue and set the next item in queue to be at spot 0. should reassign everything after to be at one less spot. A for loop?
-    //maybe work with another queue, a temp queue?
+    delete this[0]
+    this.length--;
+    
+    let j = 1;
     for (let i = 0; i < this.length; i++) {
-      if (i !== 0) {
-        
-      }
+        this[i] = this[j];
+        console.log(this[i])
+        j++; 
     }
-
+    delete this[this.length]
   }
 
   peek() {
