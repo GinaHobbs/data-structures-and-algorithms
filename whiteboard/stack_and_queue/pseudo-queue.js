@@ -26,6 +26,7 @@ class pseudoQueue {
       tempQueue.push(this.queue.pop())
     }
     delete this.queue[0]
+    this.queue.length--;
     this.queue.push(tempQueue.pop())
     return this;
   }

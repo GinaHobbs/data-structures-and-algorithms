@@ -26,7 +26,8 @@ const pseudoQueue = require('./pseudo-queue.js');
 
 let q = new pseudoQueue;
 console.log(q.enqueue(1));
-// console.log(q.enqueue(2));
+console.log(q.enqueue(2));
 // console.log(q.enqueue(3));
 console.log(q.dequeue());
+console.log(q.queue.length)
 
