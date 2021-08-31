@@ -8,6 +8,8 @@ class Queue {
 
   enqueue(value) {
     this[this.length] = value;
+    this.next = this[0];
+    console.log(`next is: ${this.next}`)
     this.length++;
 
     return this;
@@ -21,8 +23,10 @@ class Queue {
     for (let i = 0; i < this.length; i++) {
         this[i] = this[j];
         console.log(this[i])
-        j++; 
+        j++;
     }
+    this.next = this[0];
+    console.log(`next is: ${this.next}`)
     delete this[this.length]
   }
 
