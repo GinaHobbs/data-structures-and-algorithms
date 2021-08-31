@@ -17,7 +17,6 @@ class Stack {
     if (this.length === 0) return 'sorry - empty stack';
   
     let result = this[--this.length];
-  
     delete this[this.length];
     return result;
   }
