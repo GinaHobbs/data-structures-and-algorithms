@@ -1,6 +1,7 @@
 const Stack = require('./stack.js');
 const Queue = require('./queue.js');
 const pseudoQueue = require('./pseudo-queue.js');
+const AnimalShelter = require('./animal-shelter.js');
 
 // let stack = new Stack();
 // console.log(stack.push(1))
@@ -24,10 +25,24 @@ const pseudoQueue = require('./pseudo-queue.js');
 // console.log(queue.dequeue());
 // console.log(queue);
 
-let q = new pseudoQueue;
-console.log(q.enqueue(1));
-console.log(q.enqueue(2));
-// console.log(q.enqueue(3));
-console.log(q.dequeue());
-console.log(q.queue.length)
+// let q = new pseudoQueue;
+// console.log(q.enqueue(1));
+// console.log(q.enqueue(2));
+// // console.log(q.enqueue(3));
+// console.log(q.dequeue());
+// console.log(q.queue.length)
 
+Cat = {
+  name: 'Cat'
+}
+
+Dog = {
+  name: 'Dog'
+}
+
+let AS = new AnimalShelter();
+console.log(AS.enqueue(Cat));
+console.log(AS.enqueue(Dog));
+console.log(AS.enqueue(Cat));
+console.log(AS.enqueue(Dog));
+console.log(AS.dequeue('Dog'))
