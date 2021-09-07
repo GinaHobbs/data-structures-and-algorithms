@@ -78,6 +78,21 @@ class BinaryTree {
     _walk(this.root)
     return max;
   }
+
+  contains(value) {
+    let bool = false;
+
+    let _walk = node => {
+      if (node.value === value) {
+        bool = true;
+      }
+      if (node.left) _walk(node.left)
+      if (node.right) _walk(node.right)
+    }
+
+    _walk(this.root)
+    return bool;
+  }
 }
 
 module.exports = BinaryTree;

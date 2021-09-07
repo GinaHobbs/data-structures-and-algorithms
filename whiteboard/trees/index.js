@@ -15,4 +15,4 @@ tree.root.right.right = new Node(7)
 
 
 console.log('Binary Tree:', tree);
-console.log(tree.max())
+console.log(tree.contains(2))
