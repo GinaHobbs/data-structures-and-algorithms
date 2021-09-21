@@ -58,14 +58,8 @@ function Mergesort(arr) {
 
   if (n > 1) {
     let mid = n/2
-    let left = []
-    let right = []
-    for (i = 0; i <= mid; i++) {
-      left[i] = arr[i];
-    }
-    for (j = mid; j <= n; j++) {
-      right[j] = arr[j];
-    }
+    let left = arr.slice(0, mid)
+    let right = arr.slice(mid, n)
     // sort the left side
     Mergesort(left)
     // sort the right side
@@ -81,7 +75,7 @@ function Merge(left, right, arr) {
   let j = 0
   let k = 0
 
-  while ((i < length.length) && (j < right.length)) {
+  while ((i < left.length) && (j < right.length)) {
     if (left[i] <= right[j]){
       arr[k] = left[i]
       i = i + 1
@@ -92,11 +86,19 @@ function Merge(left, right, arr) {
     }
     k = k + 1
   }
-  if (i = left.length) {
-// set remaining entries in arr to remaining values in right
-  }
-  else {
-// set remaining entries in arr to remaining values in left
+
+  while ((i < left.length) || (j < right.length)) {
+    // set remaining entries in arr to remaining values in right
+    if (i === left.length) {
+      arr[k] = (right[j])
+      j++
+    }
+    // set remaining entries in arr to remaining values in left
+    else {
+      arr[k] = (left[i])
+      i++
+    }
+    k++
   }
 }
 
