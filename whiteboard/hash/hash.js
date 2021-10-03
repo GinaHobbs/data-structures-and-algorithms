@@ -49,7 +49,7 @@ class HashTable {
     }, 0) * 599 % this.size;
   }
 
-  set(key, value) {
+  add(key, value) {
     // hash the key to get a number
     let bucketNumber = this.hash(key);
 
@@ -66,7 +66,7 @@ class HashTable {
 
   }
 
-  has(key) {
+  contains(key) {
     // hash the key
     let bucketNumber = this.hash(key);
 
@@ -112,20 +112,20 @@ class HashTable {
 
 let myHashTable = new HashTable(16);
 
-myHashTable.set('David', 53);
-myHashTable.set('Jess', 53);
-myHashTable.set('Jaya', 53);
-myHashTable.set('Gina', 53);
-myHashTable.set('Rachael', 53);
-myHashTable.set('John', 53);
-myHashTable.set('Allie', 16);
+myHashTable.add('David', 53);
+myHashTable.add('Jess', 53);
+myHashTable.add('Jaya', 53);
+myHashTable.add('Gina', 53);
+myHashTable.add('Rachael', 53);
+myHashTable.add('John', 53);
+myHashTable.add('Allie', 16);
 
 myHashTable.map.forEach((data, i) => {
   console.log(i, data && data.values());
 });
 
-console.log(myHashTable.has('John'));
-console.log(myHashTable.has('Freddie'));
+console.log(myHashTable.contains('John'));
+console.log(myHashTable.contains('Freddie'));
 
 console.log(myHashTable.get('David'));
 console.log(myHashTable.get('Rosie'));
